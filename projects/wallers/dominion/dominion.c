@@ -434,7 +434,6 @@ int scoreFor (int player, struct gameState *state) {
       if (state->hand[player][i] == great_hall) { score = score + 1; };
       if (state->hand[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
     }
-
   //score from discard
   for (i = 0; i < state->discardCount[player]; i++)
     {
@@ -1222,7 +1221,7 @@ void smithyFunc(int currentPlayer, struct gameState *state, int handPos){
 
      for (int i = 0; i <= 3; i++){
 
-		drawCard(currentPlayer, state);
+		      drawCard(currentPlayer, state);
 
 	}
 	discardCard(handPos, currentPlayer, state, 0);
@@ -1261,28 +1260,27 @@ void  adventurerFunc(int currentPlayer, struct gameState *state, int handPos, in
 void cutpurseFunc(int currentPlayer, struct gameState *state, int handPos){
 
       updateCoins(currentPlayer, state, 2);
-
+     
       for (int i = 0; i < state->numPlayers; i++){
 
-	  if (i != currentPlayer){
+	        if (i != currentPlayer){
 
-	      for (int j = 0; j < state->handCount[i]; j++){
+	             for (int j = 0; j < state->handCount[i]; j++){
 
-			if (state->hand[i][j] == copper){
+			              if (state->hand[i][j] == copper){
 
-			      discardCard(j, i, state, 0);
-		   		break;
-			}
-		if (j == state->handCount[i]){
-		      for (int k = 0; k < state->handCount[i]; k++){
-			  	if (DEBUG)
-			    	printf("Player %d reveals card number %d\n", i, state->hand[i][k]);
-			}	
-		      
-		    }		
-		}				
-	    }		
-	}				
+			                  discardCard(j, i, state, 0);
+		   		              break;
+			              }
+		                if (j == state->handCount[i]){
+		                   for (int k = 0; k < state->handCount[i]; k++){
+			                   	if (DEBUG)
+			                  	printf("Player %d reveals card number %d\n", i, state->hand[i][k]);
+			                  }     	
+		                }		
+		            }				
+	        }		
+	      }				
       discardCard(handPos, currentPlayer, state, 0);			
 }
 void stewardFunc(int currentPlayer, int handPos, struct gameState *state, int choice1, int choice2, int choice3){
