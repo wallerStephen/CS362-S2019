@@ -526,7 +526,6 @@ int drawCard(int player, struct gameState *state)
 {	int count;
   int deckCounter;
   if (state->deckCount[player] <= 0){//Deck is empty
-    
     //Step 1 Shuffle the discard pile back into a deck
     int i;
     //Move discard to deck
@@ -534,7 +533,7 @@ int drawCard(int player, struct gameState *state)
       state->deck[player][i] = state->discard[player][i];
       state->discard[player][i] = -1;
     }
-
+	
     state->deckCount[player] = state->discardCount[player];
     state->discardCount[player] = 0;//Reset discard
 
@@ -563,7 +562,7 @@ int drawCard(int player, struct gameState *state)
     state->deckCount[player]--;
     state->handCount[player]++;//Increment hand count
   }
-
+	
   else{
     int count = state->handCount[player];//Get current hand count for player
     int deckCounter;
@@ -967,6 +966,7 @@ int cardCase_embargo(struct gameState *state, int choice1, int handPos){
       //add embargo token to selected supply pile
       state->embargoTokens[choice1]++;
 			
+
       //trash card
       discardCard(handPos, currentPlayer, state, 1);		
       return 0;
@@ -1204,13 +1204,15 @@ int cardCase_seahag(struct gameState *state){
 int cardCase_smithy(struct gameState *state, int handPos){
 	int currentPlayer = whoseTurn(state);
 	int i;
+	
+	
 	for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
 			
       //discard card from hand
-      discardCard(currentPlayer, handPos, state, 0);
+      discardCard(handPos, currentPlayer, state, 0);
       return 0;
 }
 int cardCase_steward(struct gameState *state, int choice1, int choice2, int choice3, int handPos){
@@ -1391,6 +1393,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 		cardCase_village(state, handPos);
     case baron:
 		cardCase_baron(state,choice1);
+		break;
     case great_hall:
 		cardCase_greathall(state,handPos);
     case minion:
