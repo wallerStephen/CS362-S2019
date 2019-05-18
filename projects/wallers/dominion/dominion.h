@@ -129,7 +129,7 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
    1, others to 0 */
 void smithyFunc(int currentPlayer, struct gameState *state, int handPos);
 void  adventurerFunc(int currentPlayer, struct gameState *state, int handPos, int drawntreasure, int z, int temphand[]);
-void cutpurseFunc(int currentPlayer, struct gameState *state, int handPos);
+void cutpurseFunc(int currentPlayer, struct gameState *state);
 void stewardFunc(int currentPlayer, int handPos, struct gameState *state, int choice1, int choice2, int choice3);
 int remodelFunc(int currentPlayer, int handPos, struct gameState *state, int choice1, int choice2, int choice3);
 
